@@ -18,7 +18,13 @@ export const goods = [
 export const App = () => {
   const [selectedGood, setSelectedGood] = useState('Jam');
 
-  const clear = () => setSelectedGood('');
+  const handleClearSelection = () => {
+    setSelectedGood('');
+  };
+
+  const handleSelectGood = (good) => {
+    setSelectedGood(good);
+  };
 
   return (
     <main className="section container">
@@ -31,7 +37,7 @@ export const App = () => {
             type="button"
             className="delete ml-3"
             aria-label="Clear selection"
-            onClick={clear}
+            onClick={handleClearSelection}
           />
         )}
       </h1>
@@ -55,7 +61,7 @@ export const App = () => {
                       data-cy="RemoveButton"
                       type="button"
                       className="button is-info"
-                      onClick={clear}
+                      onClick={handleClearSelection}
                     >
                       -
                     </button>
@@ -64,7 +70,7 @@ export const App = () => {
                       data-cy="AddButton"
                       type="button"
                       className="button"
-                      onClick={() => setSelectedGood(good)}
+                      onClick={() => handleSelectGood(good)}
                     >
                       +
                     </button>
